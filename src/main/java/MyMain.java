@@ -7,8 +7,10 @@ public class MyMain {
     //     4
     //     2
     public static void printEvensBackwards(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
-        return;
+        for (int i=arr.length-1;i>=0;i=i-2){
+            System.out.println(arr[i]);
+        }
+
     }
 
     // Next, write a method that checks if an array is sorted in
@@ -18,7 +20,16 @@ public class MyMain {
     //     isIncreasing([1, 1, 3, 6, 7]) => false (because 1 is not > 1)
     //     isIncreasing([1, 2, 3, 2, 4, 5, 8]) => false
     public static boolean isIncreasing(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        int count=0;
+        for (int i=0;i<=arr.length-2;i++){
+            if (arr[i]<arr[i+1]){
+                count+=1;
+            }
+            if (count==arr.length-1){
+                return true;
+
+            }
+        }
         return false;
     }
 
@@ -30,8 +41,13 @@ public class MyMain {
     //     isBalanced([1, 2, 3, 4, 1, -1]) => true
     //     isBalanced([1, 2, 3, 7, 2, 1]) => false (because 7 - 3 > 2)
     public static boolean isBalanced(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
-        return false;
+        int count=0;
+        for (int i=0;i<=arr.length-1;i++){
+            if (Math.abs((arr[i]-arr[arr.length-1-i]))>2){
+                return false;
+            }
+        }
+        return true;
     }
 
     // Write a method that takes an array and checks if it contains
@@ -39,7 +55,13 @@ public class MyMain {
     // Ex: containsDuplicates([1, 2, 3, 2, 1]) => true
     //     containsDuplicates([7, 2, 3, 4, 1, 5]) => false
     public static boolean containsDuplicates(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        for (int i=0;i<=arr.length-1;i++){
+            for (int j=i+1;j<=arr.length-1;j++){
+                if (arr[i]==arr[j]){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -48,9 +70,22 @@ public class MyMain {
     // to sort our code
     // This algorithm returns the sorted array
     public static int[] bubbleSort(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+
+        for (int i=0;i<=arr.length-1;i++){
+            for (int j=i+1;j<=arr.length-1;j++){
+                if (arr[i]>arr[j]){
+                    int n=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=n;
+                }
+            }
+
+
+        }
+
         return arr;
     }
+
 
 
     public static void main(String[] args) {
@@ -79,7 +114,7 @@ public class MyMain {
 
         System.out.println();
         System.out.println("Bubble Sort Tests");
-        System.out.println(Arrays.toString(new int[] {6, 1, 3, 8, 2, 9})); // [1, 2, 3, 6, 8, 9]
-        System.out.println(Arrays.toString(new int[] {12, 5, 23, 74, 12, 86, 2})); // [2, 5, 12, 23, 74, 86]
+        System.out.println(Arrays.toString(bubbleSort(new int[]{6, 1, 3, 8, 2, 9}))); // [1, 2, 3, 6, 8, 9]
+        System.out.println(Arrays.toString(bubbleSort(new int[] {12, 5, 23, 74, 12, 86, 2}))); // [2, 5, 12, 23, 74, 86]
     }
 }
